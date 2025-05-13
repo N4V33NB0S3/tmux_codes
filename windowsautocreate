@@ -1,0 +1,22 @@
+nb () {
+    if tmux has-session -t nb 2>/dev/null; then
+        tmux attach-session -t nb
+    else
+        tmux new-session -s nb \; \
+            split-window -h \; \
+            split-window -v \; \
+            select-pane -t 1 \; \
+            split-window -v \; \
+            select-pane -t 0 \; \
+            break-pane \; \
+            last-window \; \
+            select-pane -t 1 \; \
+            break-pane \; \
+            last-window \; \
+            select-pane -t 2 \; \
+            break-pane \; \
+            last-window \; \
+            select-pane -t 3 \; \
+            break-pane
+    fi
+}
